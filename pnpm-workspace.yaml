@@ -5,6 +5,9 @@ allowBuilds:
   '@swc/core': true
   sharp: true
   unrs-resolver: true
+  # Deploy bosqichida wrangler/OpenNext o'rnatadigan native build-script'lar
+  esbuild: true
+  workerd: true
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
