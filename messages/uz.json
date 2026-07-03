@@ -1,0 +1,20 @@
+{
+  "common": {
+    "appName": "Ilmify",
+    "start": "Boshlash"
+  },
+  "theme": {
+    "toggleLabel": "Rejimni almashtirish",
+    "light": "Yorug'",
+    "dark": "Qorong'i",
+    "system": "Tizim"
+  },
+  "landing": {
+    "tagline": "Zamonaviy, AI bilan boyitilgan interval takrorlash",
+    "description": "Anki'ning ilmiy metodi — chiroyli, tez va aqlli qobiqda. Kartochkalar yarating, AI bilan boyiting, hech narsani unutmang."
+  },
+  "offline": {
+    "title": "Internet yo'q",
+    "message": "Siz oflaynsiz. Ulanish qaytganda sahifa yangilanadi."
+  }
+}
