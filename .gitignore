@@ -1,11 +1,11 @@
 
-!.env.example
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
 .DS_Store
 .env*
+!.env.example
 .next/
 .pnp.*
 .pnpm-debug.log*
