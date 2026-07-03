@@ -16,5 +16,40 @@
   "offline": {
     "title": "Internet yo'q",
     "message": "Siz oflaynsiz. Ulanish qaytganda sahifa yangilanadi."
+  },
+  "decks": {
+    "title": "Deck'lar",
+    "new": "Yangi deck",
+    "cardCount": "{count} karta",
+    "empty": {
+      "title": "Hali deck yo'q",
+      "description": "Birinchi deck'ingizni yarating va kartochkalar qo'shishni boshlang.",
+      "cta": "Deck yaratish"
+    },
+    "menu": { "edit": "Tahrirlash", "delete": "O'chirish", "open": "Amallar" },
+    "form": {
+      "createTitle": "Yangi deck",
+      "editTitle": "Deck'ni tahrirlash",
+      "nameLabel": "Nom",
+      "namePlaceholder": "Masalan: Ingliz — Unit 1",
+      "descriptionLabel": "Tavsif",
+      "descriptionPlaceholder": "Ixtiyoriy",
+      "colorLabel": "Rang",
+      "cancel": "Bekor qilish",
+      "create": "Yaratish",
+      "save": "Saqlash"
+    },
+    "delete": {
+      "title": "Deck'ni o'chirish",
+      "description": "\"{name}\" o'chiriladi. Bu amalni ortga qaytarib bo'lmaydi.",
+      "cancel": "Bekor qilish",
+      "confirm": "O'chirish"
+    },
+    "errors": {
+      "nameRequired": "Nom kiritilishi shart",
+      "nameTooLong": "Nom 60 belgidan oshmasligi kerak",
+      "descriptionTooLong": "Tavsif 500 belgidan oshmasligi kerak",
+      "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring."
+    }
   }
 }
