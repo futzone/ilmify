@@ -1,5 +1,5 @@
 import "fake-indexeddb/auto";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { db } from "@/lib/db/db";
 import { createDeck, deleteDeck, getDeck, listDecks, updateDeck } from "@/lib/db/decks";
 
@@ -25,12 +25,18 @@ describe("deck repository", () => {
   });
 
   it("listDecks orders by updatedAt desc", async () => {
-    const a = await createDeck({ name: "A", color: "blue" });
-    const b = await createDeck({ name: "B", color: "green" });
-    await updateDeck(a.id, { name: "A2", color: "blue" }); // a endi eng yangi
-    const ids = (await listDecks()).map((d) => d.id);
-    expect(ids[0]).toBe(a.id);
-    expect(ids[1]).toBe(b.id);
+    let clock = 1000;
+    const spy = vi.spyOn(Date, "now").mockImplementation(() => (clock += 1000));
+    try {
+      const a = await createDeck({ name: "A", color: "blue" });
+      const b = await createDeck({ name: "B", color: "green" });
+      await updateDeck(a.id, { name: "A2", color: "blue" }); // a becomes newest
+      const ids = (await listDecks()).map((d) => d.id);
+      expect(ids[0]).toBe(a.id);
+      expect(ids[1]).toBe(b.id);
+    } finally {
+      spy.mockRestore();
+    }
   });
 
   it("updateDeck changes fields and updatedAt but not createdAt", async () => {
