@@ -26,7 +26,7 @@
       "description": "Birinchi deck'ingizni yarating va kartochkalar qo'shishni boshlang.",
       "cta": "Deck yaratish"
     },
-    "menu": { "edit": "Tahrirlash", "delete": "O'chirish" },
+    "menu": { "edit": "Tahrirlash", "delete": "O'chirish", "open": "Amallar" },
     "form": {
       "createTitle": "Yangi deck",
       "editTitle": "Deck'ni tahrirlash",
@@ -48,7 +48,8 @@
     "errors": {
       "nameRequired": "Nom kiritilishi shart",
       "nameTooLong": "Nom 60 belgidan oshmasligi kerak",
-      "loadFailed": "Deck'larni yuklab bo'lmadi."
+      "descriptionTooLong": "Tavsif 500 belgidan oshmasligi kerak",
+      "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring."
     }
   }
 }

@@ -22,4 +22,9 @@ describe("deckInputSchema", () => {
   it("exposes 8 colors", () => {
     expect(DECK_COLORS).toHaveLength(8);
   });
+  it("rejects a description longer than 500 chars", () => {
+    expect(() =>
+      deckInputSchema.parse({ name: "Ok", description: "x".repeat(501), color: "blue" }),
+    ).toThrow();
+  });
 });

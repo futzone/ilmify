@@ -49,10 +49,13 @@ export function DeckFormDialog({ open, onOpenChange, deck, onSubmit }: Props) {
     const trimmed = name.trim();
     if (trimmed.length === 0) return setError(tErr("nameRequired"));
     if (trimmed.length > 60) return setError(tErr("nameTooLong"));
+    if (description.trim().length > 500) return setError(tErr("descriptionTooLong"));
     setSaving(true);
     try {
       await onSubmit({ name: trimmed, description: description.trim(), color });
       onOpenChange(false);
+    } catch {
+      setError(tErr("saveFailed"));
     } finally {
       setSaving(false);
     }
@@ -85,6 +88,7 @@ export function DeckFormDialog({ open, onOpenChange, deck, onSubmit }: Props) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder={t("descriptionPlaceholder")}
+              maxLength={500}
             />
           </div>
 

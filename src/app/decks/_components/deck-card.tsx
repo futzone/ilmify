@@ -31,7 +31,7 @@ export function DeckCard({ deck, onEdit, onDelete }: Props) {
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button variant="ghost" size="icon" className="ml-auto size-11" aria-label={t("menu.edit")}>
+                <Button variant="ghost" size="icon" className="ml-auto size-11" aria-label={t("menu.open")}>
                   <MoreVertical className="size-5" />
                 </Button>
               }
