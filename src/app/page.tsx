@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
+import { cn } from "@/lib/utils";
 
 export default async function Home() {
   const t = await getTranslations();
@@ -13,9 +15,12 @@ export default async function Home() {
         </h1>
         <p className="text-lg font-medium text-brand">{t("landing.tagline")}</p>
         <p className="text-balance text-muted-foreground">{t("landing.description")}</p>
-        <Button size="lg" className="min-h-11 rounded-2xl px-8">
+        <Link
+          href="/decks"
+          className={cn(buttonVariants({ size: "lg" }), "min-h-11 rounded-2xl px-8")}
+        >
           {t("common.start")}
-        </Button>
+        </Link>
       </main>
     </div>
   );
