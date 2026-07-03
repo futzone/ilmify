@@ -4,9 +4,18 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { listDecks } from "@/lib/db/decks";
+import type { Deck } from "@/lib/db/types";
 import { DeckCard } from "./deck-card";
 
-export function DeckList({ onCreate }: { onCreate: () => void }) {
+export function DeckList({
+  onCreate,
+  onEdit,
+  onDelete,
+}: {
+  onCreate: () => void;
+  onEdit: (deck: Deck) => void;
+  onDelete: (deck: Deck) => void;
+}) {
   const t = useTranslations("decks");
   const decks = useLiveQuery(() => listDecks());
 
@@ -37,7 +46,7 @@ export function DeckList({ onCreate }: { onCreate: () => void }) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {decks.map((deck) => (
-        <DeckCard key={deck.id} deck={deck} />
+        <DeckCard key={deck.id} deck={deck} onEdit={onEdit} onDelete={onDelete} />
       ))}
     </div>
   );
