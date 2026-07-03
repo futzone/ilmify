@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { DECK_COLORS, type Deck, type DeckColor, type DeckInput } from "@/lib/db/types";
+import { DECK_COLORS, type Deck, type DeckColor, type DeckInput } from "@/lib/deck-types";
 import { deckColorClasses } from "@/lib/deck-colors";
 
 type Props = {

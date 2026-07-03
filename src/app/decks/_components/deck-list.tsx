@@ -1,10 +1,9 @@
 "use client";
 
-import { useLiveQuery } from "dexie-react-hooks";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { listDecks } from "@/lib/db/decks";
-import type { Deck } from "@/lib/db/types";
+import { useDecks } from "@/lib/pb/deck-queries";
+import type { Deck } from "@/lib/deck-types";
 import { DeckCard } from "./deck-card";
 
 export function DeckList({
@@ -17,10 +16,9 @@ export function DeckList({
   onDelete: (deck: Deck) => void;
 }) {
   const t = useTranslations("decks");
-  const decks = useLiveQuery(() => listDecks());
+  const { data: decks, isLoading, error } = useDecks();
 
-  // undefined = yuklanmoqda
-  if (decks === undefined) {
+  if (isLoading) {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 3 }).map((_, i) => (
@@ -30,8 +28,16 @@ export function DeckList({
     );
   }
 
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed py-16 text-center">
+        <p className="text-sm text-destructive">{t("errors.loadFailed")}</p>
+      </div>
+    );
+  }
+
   // [] = bo'sh
-  if (decks.length === 0) {
+  if (!decks || decks.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed py-16 text-center">
         <h2 className="text-lg font-semibold">{t("empty.title")}</h2>

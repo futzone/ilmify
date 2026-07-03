@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { deckColorClasses } from "@/lib/deck-colors";
-import type { Deck } from "@/lib/db/types";
+import type { Deck } from "@/lib/deck-types";
 
 type Props = {
   deck: Deck;

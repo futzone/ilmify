@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { createDeck, deleteDeck, updateDeck } from "@/lib/db/decks";
-import type { Deck, DeckInput } from "@/lib/db/types";
+import { useCreateDeck, useDeleteDeck, useUpdateDeck } from "@/lib/pb/deck-queries";
+import type { Deck, DeckInput } from "@/lib/deck-types";
 import { DeckList } from "./deck-list";
 import { DeckFormDialog } from "./deck-form-dialog";
 import { DeleteDeckDialog } from "./delete-deck-dialog";
@@ -14,6 +14,9 @@ export function DecksClient() {
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState<Deck | undefined>(undefined);
   const [deleting, setDeleting] = useState<Deck | null>(null);
+  const createM = useCreateDeck();
+  const updateM = useUpdateDeck();
+  const deleteM = useDeleteDeck();
 
   function openCreate() {
     setEditing(undefined);
@@ -25,12 +28,12 @@ export function DecksClient() {
   }
 
   async function handleSubmit(input: DeckInput) {
-    if (editing) await updateDeck(editing.id, input);
-    else await createDeck(input);
+    if (editing) await updateM.mutateAsync({ id: editing.id, input });
+    else await createM.mutateAsync(input);
   }
 
   async function handleDelete() {
-    if (deleting) await deleteDeck(deleting.id);
+    if (deleting) await deleteM.mutateAsync(deleting.id);
     setDeleting(null);
   }
 

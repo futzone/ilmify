@@ -49,7 +49,8 @@
       "nameRequired": "Nom kiritilishi shart",
       "nameTooLong": "Nom 60 belgidan oshmasligi kerak",
       "descriptionTooLong": "Tavsif 500 belgidan oshmasligi kerak",
-      "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring."
+      "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring.",
+      "loadFailed": "Deck'larni yuklab bo'lmadi."
     }
   },
   "auth": {
