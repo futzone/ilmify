@@ -1,4 +1,4 @@
-import type { DeckColor } from "@/lib/db/types";
+import type { DeckColor } from "@/lib/deck-types";
 
 // Rang belgisi (dot / swatch) uchun Tailwind bg klasslari — light/dark'da mos.
 export const deckColorClasses: Record<DeckColor, string> = {
