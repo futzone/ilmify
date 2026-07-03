@@ -12,6 +12,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- seeding auth state from client-only PocketBase authStore; unavailable during SSR render
     setUser(getCurrentUser());
     setIsLoading(false);
     const unsub = pb.authStore.onChange(() => setUser(getCurrentUser()));
