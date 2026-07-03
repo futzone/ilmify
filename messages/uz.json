@@ -51,5 +51,24 @@
       "descriptionTooLong": "Tavsif 500 belgidan oshmasligi kerak",
       "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring."
     }
+  },
+  "auth": {
+    "loginTitle": "Kirish",
+    "registerTitle": "Ro'yxatdan o'tish",
+    "email": "Email",
+    "password": "Parol",
+    "passwordConfirm": "Parolni tasdiqlang",
+    "name": "Ism",
+    "loginCta": "Kirish",
+    "registerCta": "Ro'yxatdan o'tish",
+    "toRegister": "Hisobingiz yo'qmi? Ro'yxatdan o'ting",
+    "toLogin": "Hisobingiz bormi? Kiring",
+    "logout": "Chiqish",
+    "errors": {
+      "invalid": "Email yoki parol noto'g'ri",
+      "emailTaken": "Bu email allaqachon band",
+      "passwordMismatch": "Parollar mos kelmadi",
+      "failed": "Xatolik yuz berdi. Qaytadan urinib ko'ring."
+    }
   }
 }
