@@ -41,3 +41,4 @@ public/swe-worker*.js
 public/swe-worker*.js.map
 yarn-debug.log*
 yarn-error.log*
+.playwright-mcp/
