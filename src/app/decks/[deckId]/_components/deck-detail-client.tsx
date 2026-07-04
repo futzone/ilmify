@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCards, useCreateCard, useUpdateCard, useDeleteCard } from "@/lib/pb/card-queries";
-import type { Card, CardInput, CardStatus } from "@/lib/card-types";
+import type { Card, CardInput } from "@/lib/card-types";
 import { CardEditorDialog } from "./card-editor-dialog";
 import { CardRow } from "./card-row";
 import { StatusFilterBar, type StatusFilter } from "./status-filter";
@@ -23,6 +23,7 @@ export function DeckDetailClient({ deckId }: { deckId: string }) {
   const [editorOpen, setEditorOpen] = useState(false);
   const [editing, setEditing] = useState<Card | undefined>(undefined);
   const [deleting, setDeleting] = useState<Card | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   const counts = useMemo(() => {
     const base: Record<StatusFilter, number> = { all: 0, new: 0, hard: 0, easy: 0, memorized: 0 };
@@ -51,8 +52,15 @@ export function DeckDetailClient({ deckId }: { deckId: string }) {
     else await createM.mutateAsync(input);
   }
   async function handleDelete() {
-    if (deleting) await deleteM.mutateAsync(deleting.id);
-    setDeleting(null);
+    if (!deleting) return;
+    setDeleteError(null);
+    try {
+      await deleteM.mutateAsync(deleting.id);
+    } catch {
+      setDeleteError(t("errors.saveFailed"));
+    } finally {
+      setDeleting(null);
+    }
   }
 
   return (
@@ -83,6 +91,7 @@ export function DeckDetailClient({ deckId }: { deckId: string }) {
       )}
 
       {error && <p className="text-sm text-destructive">{t("errors.loadFailed")}</p>}
+      {deleteError && <p className="text-sm text-destructive">{deleteError}</p>}
 
       {!isLoading && !error && (cards?.length ?? 0) === 0 && (
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed py-16 text-center">

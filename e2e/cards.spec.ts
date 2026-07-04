@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("card lifecycle: create, filter, study, delete", async ({ page }) => {
+test("card lifecycle: create, filter, study grading, analytics", async ({ page }) => {
   const email = `test${Date.now()}@ilmify.test`;
   const password = "Passw0rd!123";
 

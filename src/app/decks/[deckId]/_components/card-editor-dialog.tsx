@@ -10,7 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import type { Card, CardInput } from "@/lib/card-types";
@@ -56,7 +55,9 @@ export function CardEditorDialog({
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (frontText.trim().length === 0 && !(frontImage instanceof File) && !card?.front.image) {
+    const hasFrontImage =
+      frontImage instanceof File || (frontImage === undefined && !!card?.front.image);
+    if (frontText.trim().length === 0 && !hasFrontImage) {
       return setError(t("errors.frontRequired"));
     }
     setSaving(true);
