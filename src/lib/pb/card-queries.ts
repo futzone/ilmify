@@ -6,6 +6,7 @@ import {
   updateCard,
   deleteCard,
   listCards,
+  listAllCards,
   countCardsByDeck,
   gradeCard,
 } from "@/lib/pb/cards";
@@ -15,6 +16,10 @@ export function useCards(deckId: string) {
   return useQuery({ queryKey: ["cards", deckId], queryFn: () => listCards(deckId) });
 }
 
+export function useAllCards() {
+  return useQuery({ queryKey: ["cards", "all"], queryFn: listAllCards });
+}
+
 export function useDeckCardCount(deckId: string) {
   return useQuery({ queryKey: ["cardCount", deckId], queryFn: () => countCardsByDeck(deckId) });
 }
@@ -22,7 +27,7 @@ export function useDeckCardCount(deckId: string) {
 function useInvalidate(deckId: string) {
   const qc = useQueryClient();
   return () => {
-    qc.invalidateQueries({ queryKey: ["cards", deckId] });
+    qc.invalidateQueries({ queryKey: ["cards"] });
     qc.invalidateQueries({ queryKey: ["cardCount", deckId] });
     qc.invalidateQueries({ queryKey: ["reviews"] });
   };

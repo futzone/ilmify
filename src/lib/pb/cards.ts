@@ -36,6 +36,11 @@ export async function listCards(deckId: string): Promise<Card[]> {
   return records.map(mapRecordToCard);
 }
 
+export async function listAllCards(): Promise<Card[]> {
+  const records = await pb.collection(COL).getFullList({ sort: "-updated" });
+  return records.map(mapRecordToCard);
+}
+
 export async function countCardsByDeck(deckId: string): Promise<number> {
   const res = await pb.collection(COL).getList(1, 1, { filter: `deck = "${deckId}"` });
   return res.totalItems;
