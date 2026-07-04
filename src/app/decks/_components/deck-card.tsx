@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { MoreVertical } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { deckColorClasses } from "@/lib/deck-colors";
+import { useDeckCardCount } from "@/lib/pb/card-queries";
 import type { Deck } from "@/lib/deck-types";
 
 type Props = {
@@ -22,16 +24,19 @@ type Props = {
 
 export function DeckCard({ deck, onEdit, onDelete }: Props) {
   const t = useTranslations("decks");
+  const { data: count } = useDeckCardCount(deck.id);
   return (
     <Card className="rounded-2xl">
       <CardHeader>
         <div className="flex items-center gap-3">
           <span className={cn("size-4 shrink-0 rounded-full", deckColorClasses[deck.color])} />
-          <CardTitle className="truncate">{deck.name}</CardTitle>
+          <Link href={`/decks/${deck.id}`} className="min-w-0 flex-1">
+            <CardTitle className="truncate hover:underline">{deck.name}</CardTitle>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button variant="ghost" size="icon" className="ml-auto size-11" aria-label={t("menu.open")}>
+                <Button variant="ghost" size="icon" className="size-11" aria-label={t("menu.open")}>
                   <MoreVertical className="size-5" />
                 </Button>
               }
@@ -47,7 +52,7 @@ export function DeckCard({ deck, onEdit, onDelete }: Props) {
         {deck.description && (
           <p className="line-clamp-2 text-sm text-muted-foreground">{deck.description}</p>
         )}
-        <p className="text-xs text-muted-foreground">{t("cardCount", { count: 0 })}</p>
+        <p className="text-xs text-muted-foreground">{t("cardCount", { count: count ?? 0 })}</p>
       </CardContent>
     </Card>
   );
