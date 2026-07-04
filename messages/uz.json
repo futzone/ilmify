@@ -53,6 +53,87 @@
       "loadFailed": "Deck'larni yuklab bo'lmadi."
     }
   },
+  "nav": {
+    "decks": "Deck'lar",
+    "analytics": "Analitika"
+  },
+  "cards": {
+    "title": "Kartalar",
+    "new": "Yangi karta",
+    "study": "O'rganish",
+    "back": "Orqaga",
+    "count": "{count} karta",
+    "empty": {
+      "title": "Hali karta yo'q",
+      "description": "Birinchi kartangizni yarating.",
+      "cta": "Karta yaratish"
+    },
+    "status": {
+      "all": "Hammasi",
+      "new": "Yangi",
+      "hard": "Qiyin",
+      "easy": "Oson",
+      "memorized": "Yodlangan"
+    },
+    "menu": { "edit": "Tahrirlash", "delete": "O'chirish", "open": "Amallar" },
+    "form": {
+      "createTitle": "Yangi karta",
+      "editTitle": "Kartani tahrirlash",
+      "front": "Old tomon",
+      "back": "Orqa tomon",
+      "textPlaceholder": "Matn kiriting",
+      "icon": "Ikonka",
+      "addImage": "Rasm",
+      "addAudio": "Audio",
+      "remove": "O'chirish",
+      "cancel": "Bekor qilish",
+      "create": "Yaratish",
+      "save": "Saqlash"
+    },
+    "delete": {
+      "title": "Kartani o'chirish",
+      "description": "Bu karta o'chiriladi. Ortga qaytarib bo'lmaydi.",
+      "cancel": "Bekor qilish",
+      "confirm": "O'chirish"
+    },
+    "errors": {
+      "frontRequired": "Old tomon bo'sh bo'lishi mumkin emas",
+      "saveFailed": "Saqlab bo'lmadi. Qaytadan urinib ko'ring.",
+      "loadFailed": "Kartalarni yuklab bo'lmadi.",
+      "fileTooLarge": "Fayl juda katta (maksimum 5MB)."
+    }
+  },
+  "study": {
+    "showAnswer": "Javobni ko'rish",
+    "hard": "Qiyin",
+    "medium": "O'rtacha",
+    "easy": "Oson",
+    "progress": "{done} / {total}",
+    "empty": "Avval karta qo'shing",
+    "gradeFailed": "Bahoni saqlab bo'lmadi. Qaytadan urinib ko'ring.",
+    "summary": {
+      "title": "Sessiya tugadi",
+      "reviewed": "{count} karta ko'rildi",
+      "again": "Qayta o'rganish",
+      "backToDeck": "Deck'ga qaytish"
+    }
+  },
+  "analytics": {
+    "title": "Analitika",
+    "empty": "Hali o'rganish yo'q. Kartalarni o'rganishni boshlang.",
+    "streak": "Ketma-ket kunlar",
+    "streakDays": "{count} kun",
+    "totalDecks": "Deck'lar",
+    "totalCards": "Kartalar",
+    "totalReviews": "Takrorlashlar",
+    "memorizedPct": "Yodlangan",
+    "dailyReviews": "Kunlik takrorlashlar",
+    "accuracy": "Aniqlik",
+    "distribution": "Karta holati",
+    "growthUp": "▲ {pct}%",
+    "growthDown": "▼ {pct}%",
+    "growthFlat": "0%"
+  },
   "auth": {
     "loginTitle": "Kirish",
     "registerTitle": "Ro'yxatdan o'tish",
