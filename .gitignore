@@ -45,3 +45,11 @@ yarn-error.log*
 test-results/
 playwright-report/
 /e2e/.auth
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
