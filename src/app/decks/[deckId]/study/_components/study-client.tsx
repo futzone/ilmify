@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useCards, useGradeCard } from "@/lib/pb/card-queries";
+import { nextStatus } from "@/lib/card-status";
 import type { Card, Grade } from "@/lib/card-types";
 import { StudyCard } from "./study-card";
 
@@ -92,9 +93,11 @@ export function StudyClient({ deckId }: { deckId: string }) {
       return setError(t("gradeFailed"));
     }
     setReviewed((n) => n + 1);
+    const next = nextStatus(current.status, current.easyStreak, g);
+    const updated = { ...current, status: next.status, easyStreak: next.easyStreak };
     // "Qiyin" bo'lsa va hali qayta qo'yilmagan bo'lsa — navbat oxiriga qo'shish.
     if (g === "hard" && !requeued.has(current.id)) {
-      setQueue((q) => [...q, current]);
+      setQueue((q) => [...q, updated]);
       setRequeued((s) => new Set(s).add(current.id));
     }
     setFlipped(false);
