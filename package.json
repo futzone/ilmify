@@ -8,6 +8,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "gen-icons": "node scripts/gen-icons.cjs",
     "test": "vitest run",
     "test:e2e": "playwright test"
   },
